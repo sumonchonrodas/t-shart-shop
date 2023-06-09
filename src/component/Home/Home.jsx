@@ -1,12 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useLoaderData} from 'react-router-dom'
+import Tshart from '../Tshart/Tshart';
+import Cart from '../Cart/Cart';
+import './Home.css'
+import toast from 'react-hot-toast';
 
 const Home = () => {
     const tsharts = useLoaderData()
-    console.log(tsharts);
+    const [cart,setCart] = useState([]);
+
+    const handleAddToCart = tshar =>{
+        // console.log(tshar);
+        const exiest = cart.find(ts =>ts._id===tshar._id);
+        if(exiest){
+            toast('You have added already.')
+        }
+        else{
+
+            const newArrya = [...cart, tshar];
+            setCart(newArrya);
+        }
+    }
+    const handleRemoveCart = id =>{
+        const remaining = cart.filter(item =>item._id !== id)
+        setCart(remaining)
+    }
     return (
-        <div>
-            <h2>hay, i am Home</h2>
+        <div className='home-container'>
+            <div className="tshart-container">
+            {
+                tsharts.map(tshart =><Tshart 
+                    key={tshart._id}
+                    tshart={tshart}
+                    handleAddToCart={handleAddToCart}
+                    ></Tshart>)
+            }
+            </div>
+            <div className="cart-containr">
+                <Cart 
+                cart={cart}
+                handleRemoveCart={handleRemoveCart}
+                ></Cart>
+            </div>
+            
         </div>
     );
 };
