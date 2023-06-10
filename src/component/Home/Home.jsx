@@ -13,7 +13,7 @@ const Home = () => {
         // console.log(tshar);
         const exiest = cart.find(ts =>ts._id===tshar._id);
         if(exiest){
-            toast('You have added already.')
+            toast.error('You have added already.')
         }
         else{
 
@@ -48,3 +48,7 @@ const Home = () => {
 };
 
 export default Home;
+/*
+1.Conditional rendaring
+
+*/

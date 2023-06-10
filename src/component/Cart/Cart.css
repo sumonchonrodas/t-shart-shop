@@ -1,0 +1,19 @@
+.bold{
+    font-weight: 900;
+}
+
+.yellow{
+    background-color: yellow;
+}
+.blue{
+    background-color: blue;
+    color: white;
+    border-radius:20px;
+    padding: 10px;
+}
+.green{
+    background-color: green;
+}
+.gray{
+    background-color: gray;
+}
